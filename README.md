@@ -45,6 +45,8 @@ app.js         # Express App & Serverless export for Vercel
 vercel.json    # Deployment configuration
 .env.example   # Template for environment variables
 
+---
+
 ## ⚙️ Installation & Local Setup
 
 1. **Clone and Install**
@@ -67,6 +69,8 @@ stripe listen --forward-to localhost:5000/api/payments/webhook
 
 4. **Start Development Server**
 npm run dev
+
+---
 
 ## 🧪 Testing with Postman
 **Import:** Load the collection.json file into Postman.
