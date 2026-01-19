@@ -1,8 +1,6 @@
 const User = require('../models/User');
 const generateToken = require('../utils/generateToken');
 
-// @desc    Register user
-// @route   POST /api/auth/register
 exports.registerUser = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
@@ -27,8 +25,6 @@ exports.registerUser = async (req, res, next) => {
     }
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
 exports.loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -51,8 +47,6 @@ exports.loginUser = async (req, res, next) => {
     }
 };
 
-// @desc    Get user profile
-// @route   GET /api/auth/profile
 exports.getUserProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.user._id);
@@ -70,4 +64,11 @@ exports.getUserProfile = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+};
+
+exports.logoutUser = (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Logged out successfully. Please delete your token from local storage/Postman.'
+    });
 };
