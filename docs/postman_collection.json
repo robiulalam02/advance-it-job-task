@@ -1,0 +1,516 @@
+{
+  "info": {
+    "_postman_id": "da7389d1-58b8-419e-8372-0767c2b98e20",
+    "name": "Backend Task",
+    "description": "API for E-commerce with JWT Auth and Stripe Payment Integration.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51471856"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test User\",\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://advance-it-job-task.vercel.app/api/auth/register",
+              "protocol": "https",
+              "host": [
+                "advance-it-job-task",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Test User\",\r\n    \"email\": \"test@email.com\",\r\n    \"password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://advance-it-job-task.vercel.app/api/auth/register",
+                  "protocol": "https",
+                  "host": [
+                    "advance-it-job-task",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "275"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 17:50:13 GMT"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"113-+n9nDH42J0Cpd5r9CeQjO5LzNBo\""
+                },
+                {
+                  "key": "Server",
+                  "value": "Vercel"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=63072000; includeSubDomains; preload"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "X-Vercel-Cache",
+                  "value": "MISS"
+                },
+                {
+                  "key": "X-Vercel-Id",
+                  "value": "bom1::iad1::dpcl8-1768845013172-cdce17850c0e"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"_id\": \"696e6ed5b69083a1bbdd8c68\",\n    \"name\": \"Test User\",\n    \"email\": \"test@email.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmU2ZWQ1YjY5MDgzYTFiYmRkOGM2OCIsImlhdCI6MTc2ODg0NTAxMywiZXhwIjoxNzcxNDM3MDEzfQ.yEJIjHylgjs-JbPpy3r8-X1KNPbpFcjDdRM8smsxYLw\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Parse the JSON response\r",
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "// Save the token to collection variables\r",
+                  "if (response.token) {\r",
+                  "    pm.collectionVariables.set(\"jwt_token\", response.token);\r",
+                  "    console.log(\"✅ Token saved to collection variables!\");\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"test@email.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://advance-it-job-task.vercel.app/api/auth/login",
+              "protocol": "https",
+              "host": [
+                "advance-it-job-task",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"test@email.com\",\r\n    \"password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://advance-it-job-task.vercel.app/api/auth/login",
+                  "protocol": "https",
+                  "host": [
+                    "advance-it-job-task",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "275"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 17:52:31 GMT"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"113-FUpakm1bjCEMYkjieqCU8IfhJC0\""
+                },
+                {
+                  "key": "Server",
+                  "value": "Vercel"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=63072000; includeSubDomains; preload"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "X-Vercel-Cache",
+                  "value": "MISS"
+                },
+                {
+                  "key": "X-Vercel-Id",
+                  "value": "bom1::iad1::j6hn5-1768845151577-c0a82224ba61"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"_id\": \"696e6ed5b69083a1bbdd8c68\",\n    \"name\": \"Test User\",\n    \"email\": \"test@email.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmU2ZWQ1YjY5MDgzYTFiYmRkOGM2OCIsImlhdCI6MTc2ODg0NTE1MSwiZXhwIjoxNzcxNDM3MTUxfQ.xHlTxo7sldOHveMlao0XWDQPPORFMuyFkNSWG_yf3TE\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": []
+          },
+          "response": [
+            {
+              "name": "Create Product",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Test Product\",\r\n    \"price\": 100,\r\n    \"description\": \"Sample desc\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://advance-it-job-task.vercel.app/api/products",
+                  "protocol": "https",
+                  "host": [
+                    "advance-it-job-task",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "216"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 17:56:45 GMT"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"d8-6DyTuJLj+eQZJboPANhAfW5RT58\""
+                },
+                {
+                  "key": "Server",
+                  "value": "Vercel"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=63072000; includeSubDomains; preload"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "X-Vercel-Cache",
+                  "value": "MISS"
+                },
+                {
+                  "key": "X-Vercel-Id",
+                  "value": "bom1::iad1::7kdbw-1768845405164-4f482a664019"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"Test Product\",\n        \"description\": \"Sample desc\",\n        \"price\": 100,\n        \"stock\": 0,\n        \"_id\": \"696e705db69083a1bbdd8c6c\",\n        \"createdAt\": \"2026-01-19T17:56:45.299Z\",\n        \"updatedAt\": \"2026-01-19T17:56:45.299Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Create Orders",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"product_id\": \"696e705db69083a1bbdd8c6c\",\r\n    \"quantity\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://advance-it-job-task.vercel.app/api/orders",
+              "protocol": "https",
+              "host": [
+                "advance-it-job-task",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Orders",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"product_id\": \"696e705db69083a1bbdd8c6c\",\r\n    \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://advance-it-job-task.vercel.app/api/orders",
+                  "protocol": "https",
+                  "host": [
+                    "advance-it-job-task",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": [
+                    "api",
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "503"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 18:05:27 GMT"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"1f7-ptSg/1XGu2sCpR8JfTwQaRORwi0\""
+                },
+                {
+                  "key": "Server",
+                  "value": "Vercel"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=63072000; includeSubDomains; preload"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "X-Vercel-Cache",
+                  "value": "MISS"
+                },
+                {
+                  "key": "X-Vercel-Id",
+                  "value": "bom1::iad1::nwssm-1768845926163-502122673794"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"orderId\": \"696e7266b69083a1bbdd8c71\",\n    \"stripeUrl\": \"https://checkout.stripe.com/c/pay/cs_test_a1c3gzUQCdo1CNJLRfrSwHpxL8PDbu5IHn7Wamt0Lf5rBCLniMMa2AGqZe#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdkdWxOYHwnPyd1blpxYHZxWjA0V2BPUzFCYzJKa1NiNWxRc3BgY3ZNdzZuX3xISnFiXEtzdUJRNVR%2FR1ZzbkpUTH1pQmNzPFI9S2R8XWlVXFQwMjNjVktOTV9ASWxVa0xzcXVsazA1ZHZsNTU9X3NiTVFPSycpJ2N3amhWYHdzYHcnP3F3cGApJ2dkZm5id2pwa2FGamlqdyc%2FJyZjY2NjY2MnKSdpZHxqcHFRfHVgJz8ndmxrYmlgWmxxYGgnKSdga2RnaWBVaWRmYG1qaWFgd3YnP3F3cGB4JSUl\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    }
+  ]
+}
