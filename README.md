@@ -34,7 +34,6 @@ A professional-grade RESTful backend developed for the **Backend Developer Techn
 
 ## 📂 Project Structure
 
-```text
 /src
   /config      # DB and Stripe initialization
   /controllers # Logic for Auth, Product, Order, and Payment
